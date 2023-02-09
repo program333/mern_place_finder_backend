@@ -9,7 +9,7 @@ const HttpError = require("./models/http-error");
 
 const app = express();
 mongoose.set("strictQuery", false);
-const port =process.env.PORT || 5000;
+const port = 5000;
 app.use(bodyParser.json());
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
@@ -48,7 +48,7 @@ app.use((error, req, res, next) => {
 //if connection is successful, we start our backend server
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.bqdi1gq.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+   process.env.DB_URL
   )
   .then(() => {
     app.listen(port);
