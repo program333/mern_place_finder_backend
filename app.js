@@ -9,7 +9,7 @@ const HttpError = require("./models/http-error");
 
 const app = express();
 mongoose.set("strictQuery", false);
-const port = 5000;
+const port =process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
